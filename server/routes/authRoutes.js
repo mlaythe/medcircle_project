@@ -8,4 +8,4 @@ authRoutes.use((req, res, next) => {
   return req.get('Authorization') === config.get('bearer-token') ? next() : res.status(401).send('Missing proper authentication.');
 });
 
-authRoutes.use(apiRoutes);
+authRoutes.use('/api', apiRoutes);
