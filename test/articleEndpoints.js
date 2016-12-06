@@ -11,4 +11,11 @@ describe('oAuth bearer token', () => {
     .expect(200)
     .end(done);
   });
+
+  it('should respond with 401 when using incorrect token', (done) => {
+    request.get('/api')
+    .set('Authorization', 'foobar')
+    .expect(401)
+    .end(done);
+  });
 });
