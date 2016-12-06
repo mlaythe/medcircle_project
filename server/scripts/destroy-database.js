@@ -1,6 +1,4 @@
 const {  bookshelf, knex  } = require('../database/database');
-const Article = require('../Articles/articleModel');
-const Promise = require('bluebird');
 
 bookshelf.knex.schema.dropTable('articles')
 .then(() => {
