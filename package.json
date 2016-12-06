@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
-    "test": ""
+    "start": "node server/server.js",
+    "start-dev": "export NODE_ENV=test; nodemon server/server.js",
+    "test": "export NODE_ENV=test; mocha test/articleEndpoints.js"
   },
   "author": "Michael Laythe",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "eslint-plugin-jsx-a11y": "^3.0.1",
     "eslint-plugin-react": "^6.8.0",
     "mocha": "^3.2.0",
+    "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.2"
   }
 }
