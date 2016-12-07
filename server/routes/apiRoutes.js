@@ -1,5 +1,5 @@
 const express = require('express');
-const { getArticles } = require('../Articles/articleController');
+const { getArticles, updateArticle } = require('../Articles/articleController');
 
 const apiRoutes = module.exports = express.Router();
 
@@ -9,3 +9,4 @@ apiRoutes.get('/:version', (req, res) => {
 
 apiRoutes.get('/:version/articles/', getArticles);
 apiRoutes.get('/:version/articles/:id', getArticles);
+apiRoutes.put('/:version/articles/:id', updateArticle);
