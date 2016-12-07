@@ -4,10 +4,16 @@ const Article = require('./articleModel');
 const articleController = {};
 
 articleController.getArticles = (req, res, next) => {
-  const articleID = req.params.id ? req.params.id : false;
+  const id = req.params.id ? req.params.id : false;
+  let promise;
 
-  Article.fetchAll()
-  .then((articles) => {
+  if (id) {
+    promise = Article.query({ where: {  id  } }).fetch();
+  } else {
+    promise = Article.query({ where: req.query }).fetchAll();
+  }
+  
+  promise.then((articles) => {
     if (!articles) {
       return res.status(400).send('No articles found.');
     }
