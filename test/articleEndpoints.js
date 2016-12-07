@@ -4,6 +4,8 @@ const request = require('supertest-as-promised')(app);
 const qs = require('qs');
 const config = require('config');
 const token = config.get('bearer-token');
+const articleFixture = require('./fixtures/articleFixture');
+const Article = require('../server/Articles/articleModel');
 
 describe('oAuth bearer token', () => {
 
@@ -90,6 +92,38 @@ describe('Article GET', () => {
       expect(result.length).to.eql(1);
       expect(result[0]['id']).to.eql(2);
       expect(result[0]['author_name']).to.eql('Ernest Reynolds');
+      done();
+    });
+  });
+});
+
+describe('Article PUT', () => {
+
+  beforeEach((done) => {
+    Article.forge(articleFixture).save(null, {  method: 'insert'  })
+    .then(() => done());
+  });
+
+  afterEach((done) => {
+    Article.query({  where: {  id: 24  }  }).destroy()
+    .then(() => done());
+  });
+
+  it('should modify the correct article', (done) => {
+    const updatedArticle = {
+      title: 'Times are changin\'',
+      summary: 'Hi!',
+    };
+
+    request.put('/api/1.0/articles/24')
+    .set('Authorization', token)
+    .send(updatedArticle)
+    .expect(200)
+    .end((err, res) => {
+      const results = JSON.parse(res.text);
+
+      expect(results['title']).to.eql('Times are changin\'');
+      expect(results['summary']).to.eql('Hi!');
       done();
     });
   });
