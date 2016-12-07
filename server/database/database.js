@@ -6,8 +6,8 @@ const knex = require('knex')({
   connection: dbKey,
   pool: {
     min: 1,
-    max: 7
-  }
+    max: 7,
+  },
 });
 
 const bookshelf = require('bookshelf')(knex);

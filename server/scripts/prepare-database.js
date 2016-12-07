@@ -1,5 +1,5 @@
 const request = require('request');
-const { bookshelf, knex } = require('../database/database');
+const { knex } = require('../database/database');
 const Article = require('../Articles/articleModel');
 const config = require('config');
 const articlesURL = config.get('articles-url');
@@ -32,10 +32,10 @@ knex.schema.createTableIfNotExists('articles', article => {
       console.log('Successfully prepared the database!');
       process.exit(0);
     })
-    .catch((err) => {
-      throw new Error(err);
+    .catch((error) => {
+      throw new Error(error);
     });
- });
+  });
 })
 .catch((err) => {
   throw new Error(err);

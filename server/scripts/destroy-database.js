@@ -1,4 +1,4 @@
-const { bookshelf, knex } = require('../database/database');
+const { bookshelf } = require('../database/database');
 
 bookshelf.knex.schema.dropTable('articles')
 .then(() => {

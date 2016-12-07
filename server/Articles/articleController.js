@@ -1,9 +1,8 @@
-const { bookshelf, knex } = require('../database/database');
 const Article = require('./articleModel');
 
 const articleController = {};
 
-articleController.getArticles = (req, res, next) => {
+articleController.getArticles = (req, res) => {
   const id = req.params.id ? req.params.id : false;
   let promise;
 
@@ -20,33 +19,23 @@ articleController.getArticles = (req, res, next) => {
 
     return res.type('application/json').status(200).send(articles);
   })
-  .catch((err) => {
-    throw new Error(err);
-  }); 
+  .catch((err) => res.status(400).send(err)); 
 };
 
-articleController.updateArticle = (req, res, next) => {
+articleController.updateArticle = (req, res) => {
   const { id } = req.params;
 
   Article.forge().where({ id }).save(req.body, { method: 'update' })
-  .then((results) => {
-    return res.type('application/json').send(results);
-  })
-  .catch((err) => {
-    return res.status(400).send('Failed to update article.');
-  });
+  .then((results) => res.type('application/json').send(results))
+  .catch((err) => res.status(400).send(err));
 };  
 
-articleController.deleteArticle = (req, res, next) => {
+articleController.deleteArticle = (req, res) => {
   const { id } = req.params;
 
   Article.query({ where: { id } }).destroy()
-  .then((results) => {
-    return res.status(200).send('Successfully deleted article.');
-  }) 
-  .catch((err) => {
-    throw new Error(err);
-  });
-}; 
-
+  .then((results) => res.status(200).send('Successfully deleted article.')) 
+  .catch((err) => res.status(400).send(err));
+};
+ 
 module.exports = articleController;
