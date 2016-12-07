@@ -18,7 +18,7 @@ articleController.getArticles = (req, res, next) => {
       return res.status(400).send('No articles found.');
     }
 
-    return res.status(200).send(articles);
+    return res.type('application/json').status(200).send(articles);
   })
   .catch((err) => {
     throw new Error(err);
@@ -30,7 +30,7 @@ articleController.updateArticle = (req, res, next) => {
 
   Article.forge().where({  id  }).save(req.body, {  method: 'update'  })
   .then((results) => {
-    return res.status(200).send(results);
+    return res.type('application/json').send(results);
   })
   .catch((err) => {
     return res.status(400).send('Failed to update article.');
