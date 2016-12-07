@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server",
-    "destroy-database": "node server/scripts/destroy-database",
-    "prepare-database": "node server/scripts/prepare-database",
-    "start": "node server/server.js",
+    "destroy-database-dev": "export NODE_ENV=test; node server/scripts/destroy-database",
+    "prepare-database-dev": "export NODE_ENV=test; node server/scripts/prepare-database",
+    "destroy-database-prod": "node server/scripts/destroy-database",
+    "prepare-database-prod": "node server/scripts/prepare-database",
     "start-dev": "export NODE_ENV=test; nodemon server/server.js",
-    "test": "export NODE_ENV=test; eslint server & mocha test/articleEndpoints.js"
+    "start": "node server/server.js",
+    "test-dev": "export NODE_ENV=test; eslint server & mocha test/articleEndpoints.js",
+    "test": "eslint server & mocha test/articleEndpoints.js"
   },
   "author": "Michael Laythe",
   "license": "MIT",
