@@ -4,7 +4,7 @@
 * ````npm run prepare-database```` - Prepares database named `medcircle` with the table `articles.`
 * ````npm run destroy-database```` - Deletes table `articles` from the `medcircle` database.
 
-### This is assuming you're on OSX and have Homebrew installed. If not, you'll have install it first.
+### Setup
 
 1. Clone the repo.
 2. Insert the given `test.json` file in the config directory.
