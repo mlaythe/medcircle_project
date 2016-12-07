@@ -9,7 +9,7 @@
     "start": "node server/server.js",
     "start-dev": "export NODE_ENV=test; nodemon server/server.js",
     "test": "export NODE_ENV=test; mocha test/articleEndpoints.js"
-  },
+ },
   "author": "Michael Laythe",
   "license": "MIT",
   "dependencies": {
@@ -23,7 +23,7 @@
     "pg": "^6.1.0",
     "qs": "^6.3.0",
     "request": "^2.79.0"
-  },
+ },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.11.1",
@@ -33,7 +33,6 @@
     "eslint-plugin-react": "^6.8.0",
     "mocha": "^3.2.0",
     "morgan": "^1.7.0",
-    "supertest": "^2.0.1",
-    "supertest-as-promised": "^4.0.2"
-  }
+    "supertest": "^2.0.1"
+ }
 }
