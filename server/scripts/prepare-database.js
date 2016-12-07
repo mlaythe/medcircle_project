@@ -25,16 +25,16 @@ knex.schema.createTableIfNotExists('articles', article => {
       const data = { id, title, summary, media_url, published_at, likes_count, author_name, author_icon_url };
 
       return Article.forge(data).save(null, { method: 'insert' });
-   });
+    });
 
     Promise.all(promises)
     .then(() => {
       console.log('Successfully prepared the database!');
       process.exit(0);
-   })
+    })
     .catch((err) => {
-      throw new Error(err);
-   });
+    throw new Error(err);
+    });
  });
 })
 .catch((err) => {

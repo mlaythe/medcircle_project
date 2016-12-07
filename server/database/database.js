@@ -7,7 +7,7 @@ const knex = require('knex')({
   pool: {
     min: 1,
     max: 7
- }
+  }
 });
 
 const bookshelf = require('bookshelf')(knex);
