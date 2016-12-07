@@ -10,7 +10,7 @@
 2. Insert the given `test.json` file in the config directory.
 3. Navigate to the root directory. Run `npm i`. 
 4. Now, run `npm prepare-database.` This will create a database named `medcircle` with the table `articles.` 
-5. Run `npm test` to confirm everything is working properly.
+5. Run `npm test` to confirm everything is working properly. This script will test all endpoints as well as run the linter.
 6. Spin up the server on port 3000 by running `npm start` or `npm start-dev`.
 
 #### Notes
