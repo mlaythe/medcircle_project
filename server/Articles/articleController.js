@@ -25,4 +25,16 @@ articleController.getArticles = (req, res, next) => {
   }); 
 };
 
+articleController.updateArticle = (req, res, next) => {
+  const { id } = req.params;
+
+  Article.forge().where({  id  }).save(req.body, {  method: 'update'  })
+  .then((results) => {
+    return res.status(200).send(results);
+  })
+  .catch((err) => {
+    throw new Error(err);
+  });
+};  
+
 module.exports = articleController;
