@@ -7,4 +7,5 @@ apiRoutes.get('/:version', (req, res) => {
   res.status(200).send('Successful');
 });
 
-apiRoutes.get('/:version/articles', getArticles);
+apiRoutes.get('/:version/articles/', getArticles);
+apiRoutes.get('/:version/articles/:id', getArticles);
