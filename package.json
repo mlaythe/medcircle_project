@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint server",
     "destroy-database": "node server/scripts/destroy-database",
     "prepare-database": "node server/scripts/prepare-database",
     "start": "node server/server.js",
     "start-dev": "export NODE_ENV=test; nodemon server/server.js",
-    "test": "export NODE_ENV=test; mocha test/articleEndpoints.js"
+    "test": "export NODE_ENV=test; eslint server & mocha test/articleEndpoints.js"
   },
   "author": "Michael Laythe",
   "license": "MIT",
@@ -26,11 +27,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.1",
-    "eslint-plugin-react": "^6.8.0",
+    "eslint": "^3.3.0",
     "mocha": "^3.2.0",
     "morgan": "^1.7.0",
     "supertest": "^2.0.1"
