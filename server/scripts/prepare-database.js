@@ -1,8 +1,8 @@
 const request = require('request');
 const { bookshelf, knex } = require('../database/database');
 const Article = require('../Articles/articleModel');
-// const config = require('config');
-// const articlesURL = config.get('articles-url');
+const config = require('config');
+const articlesURL = config.get('articles-url');
 const Promise = require('bluebird');
 
 knex.schema.createTableIfNotExists('articles', article => {
@@ -16,7 +16,7 @@ knex.schema.createTableIfNotExists('articles', article => {
   article.string('author_icon_url');
 })
 .then(() => {
-  request("https://medcircle-coding-project.s3.amazonaws.com/api/articles.json", (err, res, body) => {
+  request(articlesURL, (err, res, body) => {
     if (err) throw new Error(err);
 
     const articles = JSON.parse(body);
