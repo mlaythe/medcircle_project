@@ -33,8 +33,20 @@ articleController.updateArticle = (req, res, next) => {
     return res.status(200).send(results);
   })
   .catch((err) => {
-    throw new Error(err);
+    return res.status(400).send('Failed to update article.');
   });
 };  
+
+articleController.deleteArticle = (req, res, next) => {
+  const { id } = req.params;
+
+  Article.query({  where: {  id  }  }).destroy()
+  .then((results) => {
+    return res.status(200).send('Successfully deleted article.');
+  }) 
+  .catch((err) => {
+    throw new Error(err);
+  });
+}; 
 
 module.exports = articleController;
