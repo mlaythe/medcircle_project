@@ -1,5 +1,5 @@
 const express = require('express');
-const {  getArticles, updateArticle, deleteArticle  } = require('../Articles/articleController');
+const articles1 = require('../1.0/articles');
 
 const apiRoutes = module.exports = express.Router();
 
@@ -7,7 +7,4 @@ apiRoutes.get('/:version', (req, res) => {
   res.status(200).send('Successful');
 });
 
-apiRoutes.get('/:version/articles/', getArticles);
-apiRoutes.get('/:version/articles/:id', getArticles);
-apiRoutes.put('/:version/articles/:id', updateArticle);
-apiRoutes.delete('/:version/articles/:id', deleteArticle);
+apiRoutes.use('/1.0', articles1);
