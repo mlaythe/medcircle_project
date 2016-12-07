@@ -1,5 +1,5 @@
 const request = require('request');
-const {  bookshelf, knex  } = require('../database/database');
+const { bookshelf, knex } = require('../database/database');
 const Article = require('../Articles/articleModel');
 // const config = require('config');
 // const articlesURL = config.get('articles-url');
@@ -21,21 +21,21 @@ knex.schema.createTableIfNotExists('articles', article => {
 
     const articles = JSON.parse(body);
     const promises = articles.map((article) => {
-      const {  id, title, summary, media_url, published_at, likes_count, author: { name: author_name, icon_url: author_icon_url }  } = article;
-      const data = {  id, title, summary, media_url, published_at, likes_count, author_name, author_icon_url  };
+      const { id, title, summary, media_url, published_at, likes_count, author: { name: author_name, icon_url: author_icon_url } } = article;
+      const data = { id, title, summary, media_url, published_at, likes_count, author_name, author_icon_url };
 
-      return Article.forge(data).save(null, {  method: 'insert'  });
-    });
+      return Article.forge(data).save(null, { method: 'insert' });
+   });
 
     Promise.all(promises)
     .then(() => {
       console.log('Successfully prepared the database!');
       process.exit(0);
-    })
+   })
     .catch((err) => {
       throw new Error(err);
-    });
-  });
+   });
+ });
 })
 .catch((err) => {
   throw new Error(err);

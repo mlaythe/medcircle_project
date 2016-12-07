@@ -1,5 +1,5 @@
 const express = require('express');
-const {  getArticles, updateArticle, deleteArticle  } = require('../Articles/articleController');
+const { getArticles, updateArticle, deleteArticle } = require('../Articles/articleController');
 
 const articles = module.exports = express.Router();
 

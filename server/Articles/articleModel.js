@@ -1,4 +1,4 @@
-const {  bookshelf, knex  } = require('../database/database');
+const { bookshelf, knex } = require('../database/database');
 
 const Article = bookshelf.Model.extend({
   tableName: 'articles',
