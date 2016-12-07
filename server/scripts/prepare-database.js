@@ -21,12 +21,15 @@ knex.schema.createTableIfNotExists('articles', article => {
 
     const articles = JSON.parse(body);
     const promises = articles.map((article) => {
+      // destructure article object and add each property to data object
+      // use data object to write new Article to db
       const { id, title, summary, media_url, published_at, likes_count, author: { name: author_name, icon_url: author_icon_url } } = article;
       const data = { id, title, summary, media_url, published_at, likes_count, author_name, author_icon_url };
 
       return Article.forge(data).save(null, { method: 'insert' });
     });
 
+    // need Promise.all, because bookshelf doesn't expose a bulk write method, so we have to resolve every write to the db ourselves
     Promise.all(promises)
     .then(() => {
       console.log('Successfully prepared the database!');
