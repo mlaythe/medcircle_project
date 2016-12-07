@@ -2,7 +2,7 @@
   "summary": "Version 1.0 of MedCircle Project API",
   "routes": {
     "articles": {
-      "summary": "Article API that allows you to perform CRUD operations. Can access specific articles through article ID ex. /1.0/articles/24",
+      "summary": "Article API that allows you to perform CRUD operations. Can access specific articles through article ID ex. /1.0/articles/4",
       "GET": "Fetches article based on article ID provided. Fetches all articles if no ID is specified.",
       "PUT": "Updates article based on body of request.",
       "DELETE": "Deletes article based on article ID provided."
