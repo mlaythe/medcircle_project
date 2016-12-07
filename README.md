@@ -1,8 +1,8 @@
 # medcircle_project
 
 ## Scripts
-````npm run prepare-database```` - Prepares database named `medcircle` with the table `articles.`
-````npm run destroy-database```` - Deletes table `articles` from the `medcircle` database.
+* ````npm run prepare-database```` - Prepares database named `medcircle` with the table `articles.`
+* ````npm run destroy-database```` - Deletes table `articles` from the `medcircle` database.
 
 ### This is assuming you're on OSX and have Homebrew installed. If not, you'll have install it first.
 
