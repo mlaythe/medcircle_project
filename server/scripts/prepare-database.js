@@ -33,7 +33,7 @@ knex.schema.createTableIfNotExists('articles', article => {
       process.exit(0);
     })
     .catch((err) => {
-    throw new Error(err);
+      throw new Error(err);
     });
  });
 })

@@ -48,7 +48,7 @@ describe('Article GET', () => {
       }
       
       done();
-   });
+    });
   });
 
   it('should respond with article when ID parameter is specified', (done) => {
@@ -67,7 +67,7 @@ describe('Article GET', () => {
       }
       
       done();
-   });
+    });
   });
 
   it('should respond with 400 when requesting an article that doesn\'t exist', (done) => {
@@ -93,7 +93,7 @@ describe('Article GET', () => {
       expect(result[0]['id']).to.eql(2);
       expect(result[0]['author_name']).to.eql('Ernest Reynolds');
       done();
-   });
+    });
   });
 });
 
@@ -125,7 +125,7 @@ describe('Article PUT', () => {
       expect(results['title']).to.eql('Times are changin\'');
       expect(results['summary']).to.eql('Hi!');
       done();
-   });
+    });
   });
 
   it('should respond with 400 when article ID does not exist', (done) => {
