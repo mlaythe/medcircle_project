@@ -127,4 +127,43 @@ describe('Article PUT', () => {
       done();
     });
   });
+
+  it('should respond with 400 when article ID does not exist', (done) => {
+    const updatedArticle = {
+      title: 'Cheers~',
+    };
+
+    request.put('/api/1.0/articles/224000')
+    .set('Authorization', token)
+    .send(updatedArticle)
+    .expect(400)
+    .end(done);
+  });
+});
+
+describe('Article DELETE', () => {
+
+  beforeEach((done) => {
+    Article.forge(articleFixture).save(null, {  method: 'insert'  })
+    .then(() => done());
+  });
+
+  afterEach((done) => {
+    Article.query({  where: {  id: 24  }  }).destroy()
+    .then(() => done());
+  });
+
+  it('should delete the correct article', (done) => {
+    request.delete('/api/1.0/articles/24')
+    .set('Authorization', token)
+    .expect(200)
+    .end(done);
+  });
+
+  it('should respond with 200 when article ID does not exist', (done) => {
+    request.delete('/api/1.0/articles/224000')
+    .set('Authorization', token)
+    .expect(200)
+    .end(done);
+  });
 });
