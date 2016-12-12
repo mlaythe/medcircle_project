@@ -26,7 +26,7 @@ articleController.updateArticle = (req, res) => {
   const { id } = req.params;
 
   Article.forge().where({ id }).save(req.body, { method: 'update' })
-  .then((results) => res.type('application/json').send(results))
+  .then((results) => res.type('application/json').status(200).send(results))
   .catch((err) => res.status(400).send(err));
 };  
 
